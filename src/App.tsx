@@ -1,8 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Link, useParams } from "react-router";
+
+export const Detail = () => {
+  const { id } = useParams();
+  return <div className="text-6xl">Dettaglio: {id}</div>
+}
+
 
 export const App = () => {
   const [count, setCount] = useState(0);
-  const [title, setTitle] = useState("Titolo");
+  const [title, setTitle] = useState("Sono il nuovo titolo w22222222");
+
+  useEffect(() => {
+    if (count === 4) {
+      setTitle("Il titolo ha superato il 4");
+
+    }
+  });
 
   return (
     <div className="h-dvh flex flex-col items-center justify-center">
@@ -28,9 +42,7 @@ export const App = () => {
             Cambia
           </button>
 
-          <p className="text-center">
-            Modifica <code>src/App.tsx</code> e salva per testare l'hot reload
-          </p>
+          <Link to="/frontend-rocks/dettaglio/1">Link alla pagina di dettaglio</Link>
         </div>
       </div>
     </div>
