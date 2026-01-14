@@ -5,8 +5,8 @@ import { DetailRoute } from "../../routes/detail";
 export const AppRouter = () => (
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<RootRoute />} />
-      <Route path="/dettaglio/:id" element={<DetailRoute />} />
+      <Route path="/frontend-rocks" element={<RootRoute />} />
+      <Route path="/frontend-rocks/dettaglio/:id" element={<DetailRoute />} />
     </Routes>
   </BrowserRouter>
 );

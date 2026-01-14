@@ -1,6 +1,3 @@
-import { Pokedex } from "pokeapi-js-wrapper";
-// https://github.com/PokeAPI/pokeapi-js-wrapper
+import { PokemonClient } from "pokenode-ts";
 
-export const PokeAPI =  new Pokedex({
-  limit: 20,
-});
+export const PokeAPI = new PokemonClient();

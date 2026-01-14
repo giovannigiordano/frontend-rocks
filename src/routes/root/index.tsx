@@ -12,10 +12,7 @@ interface PokemonCard {
 }
 
 async function fetchData(payload: { offset: number }): Promise<PokemonCard[]> {
-  const list = await PokeAPI.getPokemonsList({
-    limit: DEFAULT_LIMIT,
-    ...payload,
-  });
+  const list = await PokeAPI.listPokemons(payload.offset, DEFAULT_LIMIT);
   const pokemons = await Promise.all(
     list.results.map(async (item: { name: string; url: string }) => {
       const pokemon = await PokeAPI.getPokemonByName(item.name);
@@ -25,9 +22,9 @@ async function fetchData(payload: { offset: number }): Promise<PokemonCard[]> {
 
   return pokemons.map((item) => ({
     id: item.id,
-    image: item.sprites.other["official-artwork"].front_default ?? "",
+    image: item.sprites.other?.["official-artwork"].front_default ?? "",
     name: item.name,
-    types: item.types.map((type: any) => type.type.name),
+    types: item.types.map((type) => type.type.name),
   }));
 }
 
@@ -51,11 +48,13 @@ export const RootRoute = () => {
   useEffect(() => {
     if (offset === 0) return;
     setIsLoading(true);
-    fetchData({ offset }).then((result) => {
-      setData((state) => [...state, ...result]);
-    }).finally(() => {
-      setIsLoading(false);
-    });
+    fetchData({ offset })
+      .then((result) => {
+        setData((state) => [...state, ...result]);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, [offset]);
 
   const onLoadMore = () => {
@@ -65,7 +64,7 @@ export const RootRoute = () => {
   return (
     <>
       <header className="py-2 px-4 bg-white shadow-md border-b-4 border-yellow-400 sticky top-0 z-10">
-        <img src="/logo.png" className="w-60 h-auto" />
+        <img src="/frontend-rocks/logo.png" className="w-60 h-auto" />
       </header>
 
       <main>
