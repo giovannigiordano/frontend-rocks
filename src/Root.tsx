@@ -1,14 +1,9 @@
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router";
+import { Link } from "react-router";
 
-export const Detail = () => {
-  const { id } = useParams();
-  return <div className="text-6xl">Dettaglio: {id}</div>;
-};
-
-export const App = () => {
+export const Root = () => {
   const [count, setCount] = useState(0);
-  const [title, setTitle] = useState("Sono il nuovo titolo w22222222");
+  const [title, setTitle] = useState("Titolo iniziale");
 
   useEffect(() => {
     if (count === 4) {
@@ -37,10 +32,13 @@ export const App = () => {
             className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-md cursor-pointer hover:bg-blue-600 transition-colors"
             onClick={() => setTitle("Charizard")}
           >
-            Cambia
+            Cambia titolo
           </button>
 
-          <Link to="/frontend-rocks/dettaglio/1">
+          <Link
+            to="/frontend-rocks/dettaglio/1"
+            className="text-blue-500 underline"
+          >
             Link alla pagina di dettaglio
           </Link>
         </div>
