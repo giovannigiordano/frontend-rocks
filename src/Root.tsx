@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+/*import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { PokeAPI } from "./api";
-
+*/
 
 interface Props {
   id: number;
@@ -70,14 +70,14 @@ const typeColors: { [key: string]: string } = {
   steel: "bg-gray-500",
 };
 
-
+/*
 interface PokemonCard {
   id: number;
   image: string;
   name: string;
   types: string[];
 }
-/*
+
 async function fetchData(offset: number): Promise<PokemonCard[]> {
   const list = await PokeAPI.listPokemons(offset, 20);
   const pokemons = await Promise.all(
