@@ -70,7 +70,7 @@ export const RootRoute = () => {
       <main>
         <div className="flex flex-wrap items-center justify-center gap-4 p-8">
           {data.map((item) => (
-            <Link to={`/dettaglio/${item.id}`} key={item.id}>
+            <Link to={`/frontend-rocks/dettaglio/${item.id}`} key={item.id}>
               <Card key={item.id} {...item} />
             </Link>
           ))}

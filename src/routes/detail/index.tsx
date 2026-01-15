@@ -16,7 +16,7 @@ interface DetailData {
 }
 
 const fetchData = async (id: number): Promise<DetailData> => {
-  const data = await PokeAPI.getPokemonByName(id);
+  const data = await PokeAPI.getPokemonByName(String(id));
 
   return {
     abilities: data.abilities.map((ability) => ability.ability.name),
@@ -24,7 +24,7 @@ const fetchData = async (id: number): Promise<DetailData> => {
     height: data.height,
     hp: data.stats[0].base_stat,
     id: data.id,
-    image: data.sprites.other["official-artwork"].front_default ?? "",
+    image: data.sprites.other?.["official-artwork"].front_default ?? "",
     name: data.name,
     types: data.types.map((type) => type.type.name),
     weight: data.weight,
@@ -46,7 +46,7 @@ export const DetailRoute: React.FC = () => {
   return (
     <>
       <header className="py-2 px-4 bg-white shadow-md border-b-4 border-yellow-400 sticky top-0 z-10">
-        <img src="/logo.png" className="w-60 h-auto" />
+        <img src="/frontend-rocks/logo.png" className="w-60 h-auto" />
       </header>
 
       <div className="bg-white p-12">
